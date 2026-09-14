@@ -27,3 +27,9 @@ _handoff.md
 *.mp3
 *.wav
 *.ogg
+
+# --- Редакторы и временные файлы ---
+.idea/
+.vscode/
+*.log
+*.tmp

@@ -67,9 +67,9 @@ MODEL = os.getenv("OPENAI_MODEL") or "gpt-4o-mini"
 
 # ------------------------- Загрузка билетов -------------------------
 
-def load_tickets() -> dict[int, dict]:
+def load_tickets(path: Path | None = None) -> dict[int, dict]:
     """Разбирает Экзамен_ответы_v2.md на билеты: номер -> {вопрос, эталон}."""
-    text = ANSWERS_FILE.read_text(encoding="utf-8")
+    text = (path or ANSWERS_FILE).read_text(encoding="utf-8")
     tickets = {}
     # Разбиваем по заголовкам "### Вопрос N. ..."
     parts = re.split(r"^### Вопрос (\d+)\. ", text, flags=re.M)
